@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Apple-Style Product Grid</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    :root {
+      --bg: #f5f5f7;
+      --fg: #1d1d1f;
+      --accent: #0071e3;
+      --card-bg: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui;
+      background: var(--bg);
+      color: var(--fg);
+    }
+
+    /* ---------------- HEADER ---------------- */
+    header {
+      background: #ffffffcc;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #d2d2d7;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      padding: 0.7rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--fg);
+      opacity: 0.8;
+    }
+    nav a:hover { opacity: 1; }
+
+    /* ---------------- GRID ---------------- */
+    .products-grid {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 1.2rem;
+      padding: 1.2rem;
+    }
+
+    .product-card {
+      background: var(--card-bg);
+      border-radius: 30px;
+      padding: 2rem;
+
+      /* CENTER CONTENT vertically + horizontally */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      text-align: center;
+      min-height: 300px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+
+      /* Default: 3 per row (span 2) */
+      grid-column: span 2;
+    }
+
+    .product-card h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .product-card p {
+      max-width: 380px;
+      font-size: 1.1rem;
+      color: #6e6e73;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta a {
+      display: inline-block;
+      padding: 0.7rem 1.6rem;
+      border-radius: 50px;
+      font-size: 1rem;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .cta a:hover { filter: brightness(1.07); }
+
+    /* ---------- FIRST 3: HERO FULL-WIDTH ---------- */
+    .product-card:nth-child(-n + 3) {
+      grid-column: 1 / -1; /* full width */
+      min-height: 500px;
+      font-size: 1.2rem;
+    }
+
+    /* ---------- NEXT 6: 50% WIDTH (2 per row) ---------- */
+    .product-card:nth-child(n + 4):nth-child(-n + 9) {
+      grid-column: span 3; /* 2 per row */
+      min-height: 400px;
+    }
+
+    /* ---------- REST: 33% WIDTH ---------- */
+    /* default: span 2 (6 columns / 2 = 3 per row) */
+
+    /* ---------------- SLIGHT RESPONSIVE ---------------- */
+    @media (max-width: 1000px) {
+      .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .product-card {
+        grid-column: 1 / -1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">Brand</div>
+  <nav>
+    <ul>
+      <li><a href="#">Products</a></li>
+      <li><a href="#">Store</a></li>
+      <li><a href="#">Support</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+<section class="products-grid">
+
+  <!-- HERO CARDS -->
+  <article class="product-card">
+    <h2>Product One</h2>
+    <p>Flagship performance, crafted with precision. Pure experience.</p>
+    <div class="cta"><a href="#">Learn more</a></div>
+  </article>
+
+  <article class="product-card">
+    <h2>Product Two</h2>
+    <p>Powerful enough for pros. Light enough to go everywhere.</p>
+    <div class="cta"><a href="#">Learn more</a></div>
+  </article>
+
+  <article class="product-card">
+    <h2>Product Three</h2>
+    <p>Compact, elegant, and surprisingly capable.</p>
+    <div class="cta"><a href="#">Learn more</a></div>
+  </article>
+
+  <!-- 50% WIDTH CARDS -->
+  <article class="product-card">
+    <h2>Product Four</h2>
+    <p>Vivid displays, crisp sound, and immersive experiences.</p>
+    <div class="cta"><a href="#">Learn more</a></div>
+  </article>
+
+  <article class="product-card">
+    <h2>Product Five</h2>
+    <p>Quiet power and all-day productivity.</p>
+    <div class="cta"><a href="#">Learn more</a></div>
+  </article>
+
+  <article class="product-card">
+    <h2>Product Six</h2>
+    <p>Engineered for speed, stability, and gameplay excellence.</p>
+    <div class="cta"><a href="#">Learn more</a></div>
+  </article>
+
+  <article class="product-card">
+    <h2>Product Seven</h2>
+    <p>The smart hub your home deserves.</p>
+    <div class="cta"><a href="#">Learn more</a></div>
+  </article>
+
+  <article class="product-card">
+    <h2>Product Eight</h2>
+    <p>Energy-efficient design with ultra-fast charging.</p>
+    <div class="cta"><a href="#">Learn more</a></div>
+  </article>
+
+  <article class="product-card">
+    <h2>Product Nine</h2>
+    <p>Accessories that elevate your workflow.</p>
+    <div class="cta"><a href="#">Learn more</a></div>
+  </article>
+
+  <!-- 33% WIDTH (DEFAULT) -->
+  <article class="product-card">
+    <h2>Product Ten</h2>
+    <p>Simple, reliable and made for everyday life.</p>
+    <div class="cta"><a href="#">Learn more</a></div>
+  </article>
+
+  <article class="product-card">
+    <h2>Product Eleven</h2>
+    <p>Secure storage for everything that matters.</p>
+    <div class="cta"><a href="#">Learn more</a></div>
+  </article>
+
+  <article class="product-card">
+    <h2>Product Twelve</h2>
+    <p>Modular components that grow with your needs.</p>
+    <div class="cta"><a href="#">Learn more</a></div>
+  </article>
+
+</section>
+
+</main>
+
+</body>
+</html>
+
